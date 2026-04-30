@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ====== THEME VARIABLES ====== */
+:root {
+  --background: #FFF9C4;
+  --foreground: #171717;
+  --selection-bg: #171717;
+  --selection-fg: #FFF9C4;
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #32CD32;
+  --selection-bg: #32CD32;
+  --selection-fg: #050505;
+}
+
+/* ====== BASE STYLES ====== */
+html {
+  background-color: #FFF9C4;
+  background-color: var(--background);
+  min-height: 100%;
+}
+
+html.dark {
+  background-color: #050505;
+  background-color: var(--background);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Ensure every section/div inherits consistent background — no white flashes */
+main,
+section,
+footer,
+nav {
+  background-color: transparent;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+/* ====== SCROLLBAR ====== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
