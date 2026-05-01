@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useThree, useFrame } from '@react-three/fiber';
-import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
+import { useGLTF, useTexture, Environment, Lightformer, ContactShadows } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
@@ -25,6 +25,7 @@ export default function Lanyard({ isHackerMode }) {
         <Physics interpolate gravity={[0, -60, 0]} timeStep={1 / 60}>
           <Band isHackerMode={isHackerMode} />
         </Physics>
+        <ContactShadows opacity={0.2} blur={2} far={10} resolution={256} color="#000000" position={[0, -8, 0]} />
       </Canvas>
     </div>
   );

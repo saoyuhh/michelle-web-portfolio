@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { Section } from "@/components/Section";
 import { Github, Linkedin, Mail, ExternalLink, Terminal, Lock, Unlock, ArrowUpRight } from "lucide-react";
 
@@ -26,39 +27,35 @@ export default function Home() {
 
   const projects = [
     {
-      title: "Kost Management System",
-      desc: "Comprehensive system for managing boarding houses and tenants.",
+      title: "President Cupid’s",
+      desc: "Campus-based matchmaking platform that connects students across majors and organizations based on shared interests.",
       tech: "PHP, MySQL",
-      impact: "100+ users / real-time tracking",
-      link: "#",
+      impact: "Achieved 100+ active users and university-level recognition",
+      link: "president-cupid.wuaze.com",
+
     },
     {
-      title: "Student Matching Platform (Cupid)",
-      desc: "Platform to connect students based on interests and academic goals.",
-      tech: "React, Node.js",
-      impact: "Enhanced student networking",
-      link: "#",
+      title: "Kost Management System",
+      desc: "Web-based system for managing boarding houses, tenants, rooms, and payment records in an organized structure.",
+      tech: "PHP, MySQL",
+      impact: "Improved operational efficiency for 100+ tenants through structured data management",
+      link: "https://github.com/saoyuhh/Kost-Management-System",
     },
     {
       title: "ArenaGo",
-      desc: "Sports venue booking and management application.",
+      desc: "Mobile application for real-time badminton court booking and scheduling system.",
       tech: "Kotlin, Firebase",
-      impact: "Streamlined reservation process",
-      link: "#",
+      impact: "Reduced double-booking issues and improved reservation efficiency",
+      link: "https://github.com/saoyuhh/Arena-Go",
+
     },
     {
-      title: "Roblox Game (Optional)",
-      desc: "Interactive multiplayer game developed on the Roblox platform.",
-      tech: "Lua",
-      impact: "1000+ plays / community engagement",
+      title: "Emergency Hospital Simulator (Roblox)",
+      desc: "Multiplayer simulation game with interactive hospital roleplay and custom gameplay mechanics.",
+      tech: "Lua, Roblox Studio",
+      impact: "Enhanced multiplayer experience through optimized server-side logic",
       link: "#",
-    },
-    {
-      title: "IRMAS (Risk Management)",
-      desc: "Internal Risk Management System for tracking vulnerabilities.",
-      tech: "PHP, Bootstrap",
-      impact: "Improved security posture",
-      link: "https://github.com",
+
     },
   ];
 
@@ -125,36 +122,56 @@ export default function Home() {
         {/* Text Content - above canvas */}
         <div className="max-w-6xl mx-auto px-6 md:px-12 w-full relative z-20 pointer-events-none pt-16">
           <div className="w-full md:w-1/2 text-left pointer-events-auto">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-3 text-foreground transition-colors duration-500">Michelle</h1>
-            <p className="text-xl md:text-2xl opacity-80 mb-5 font-semibold transition-colors duration-500">
-              Informatics Student | Web & System Developer
-            </p>
-            <p className="text-lg opacity-70 max-w-lg leading-relaxed font-medium transition-colors duration-500">
-              Building structured web systems and internal applications using PHP, MySQL, and Kotlin.
-            </p>
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 text-foreground transition-colors duration-500"
+            >
+              Michelle.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="text-2xl md:text-3xl lg:text-4xl opacity-80 mb-6 font-bold transition-colors duration-500 leading-tight"
+            >
+              Tech Enthusiast <span className="text-foreground/30 px-2">&</span> Undergraduate Student
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              className="text-lg md:text-xl opacity-70 max-w-md leading-relaxed font-medium transition-colors duration-500"
+            >
+              Passionate about turning ideas into practical digital solutions through technology and constant learning.
+            </motion.p>
           </div>
         </div>
       </section>
 
 
       {/* About Section */}
-      <Section id="about" className="my-8">
+      <Section id="about">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+          <h2 className="text-4xl font-bold mb-6 flex items-center gap-3">
             <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
             About Me
           </h2>
           <p className="text-lg leading-relaxed opacity-80 font-medium">
-            I am an Informatics & Cyber Security student at President University with a strong focus on digital forensics.
-            I bridge the gap between building robust software systems and ensuring they remain secure and reliable.
-            My passion lies in developing practical applications, from internal management tools to complex web platforms,
-            always with an eye on structured, maintainable code.
+            Undergraduate Informatics student interested in web development and cybersecurity.
           </p>
+          <p className="text-lg leading-relaxed opacity-80 font-medium">
+            I enjoy building simple, functional web applications and exploring how systems work behind the scenes.
+            I focus on strengthening my fundamentals in development, clean code, and basic security practices.
+            Currently, I’m continuing to build my foundation in web development, security, and software testing.
+          </p>
+
         </div>
       </Section>
 
       {/* Projects Section */}
-      <Section id="projects" className="my-8">
+      <Section id="projects">
         <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
           <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
           Cyber Lab (Projects)
@@ -166,11 +183,7 @@ export default function Home() {
               key={index}
               className="group relative bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-2xl p-6 hover:shadow-xl hover:border-foreground/50 dark:hover:border-matrix/80 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <a href={project.link} className="text-foreground/50 hover:text-foreground">
-                  <ExternalLink size={20} />
-                </a>
-              </div>
+
 
               <h3 className="text-xl font-bold mb-2 text-foreground transition-colors">{project.title}</h3>
               <p className="opacity-70 mb-6 flex-grow font-medium">{project.desc}</p>
@@ -182,8 +195,11 @@ export default function Home() {
                 </div>
                 <div className="text-sm font-bold opacity-90 flex justify-between items-center">
                   <span>Impact: <span className="font-medium opacity-70">{project.impact}</span></span>
-                  {(project.title.includes("IRMAS") || project.title.includes("Cupid")) && (
-                    <a href={project.link} className="flex items-center gap-1 text-xs uppercase tracking-wider hover:underline">
+                  {project.link && project.link !== "#" && (
+                    <a
+                      href={project.link}
+                      className="flex items-center gap-1 text-xs uppercase tracking-wider hover:underline"
+                    >
                       View <ArrowUpRight size={12} />
                     </a>
                   )}
@@ -195,7 +211,7 @@ export default function Home() {
       </Section>
 
       {/* Skills Section */}
-      <Section id="skills" className="my-8">
+      <Section id="skills">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
             <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
@@ -216,7 +232,7 @@ export default function Home() {
       </Section>
 
       {/* Credentials Section */}
-      <Section id="credentials" className="my-8 mb-16">
+      <Section id="credentials">
         <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
           <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
           Professional Credentials
@@ -243,23 +259,45 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Contact Footer */}
-      <footer id="contact" className="py-10 border-t-2 border-foreground/10 dark:border-matrix/20 text-center">
-        <h2 className="text-2xl font-bold mb-5">Let's Connect</h2>
-        <div className="flex justify-center gap-5 mb-6">
-          <a href="#" className="p-3 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
-            <Github size={20} />
-          </a>
-          <a href="#" className="p-3 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
-            <Linkedin size={20} />
-          </a>
-          <a href="mailto:contact@example.com" className="p-3 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
-            <Mail size={20} />
-          </a>
+      {/* Call to Action Section */}
+      <Section id="connect" className="text-center">
+        <div className="max-w-2xl mx-auto space-y-8">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Ready to secure the future?</h2>
+          <p className="text-xl opacity-70 font-medium">
+            Currently looking for new opportunities and collaborations in web development and cyber security.
+          </p>
+          <div className="pt-8">
+            <a
+              href="mailto:contact@example.com"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background dark:bg-matrix dark:text-black rounded-full font-black text-xl hover:scale-105 transition-transform"
+            >
+              Get In Touch <ArrowUpRight size={24} />
+            </a>
+          </div>
         </div>
-        <p className="opacity-50 text-sm font-bold">
-          © {new Date().getFullYear()} Michelle. System Secured.
-        </p>
+      </Section>
+
+      {/* Contact Footer */}
+      <footer id="contact" className="py-20 border-t-2 border-foreground/10 dark:border-matrix/20 text-center">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="font-black text-2xl tracking-tighter">M.</div>
+
+          <div className="flex justify-center gap-5">
+            <a href="#" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
+              <Github size={24} />
+            </a>
+            <a href="#" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
+              <Linkedin size={24} />
+            </a>
+            <a href="mailto:contact@example.com" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
+              <Mail size={24} />
+            </a>
+          </div>
+
+          <p className="opacity-50 text-sm font-bold">
+            © {new Date().getFullYear()} Michelle. System Secured.
+          </p>
+        </div>
       </footer>
     </main>
   );
