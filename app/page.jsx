@@ -68,7 +68,6 @@ export default function Home() {
     "Linux",
     "Network Security",
     "Digital Forensics",
-    "hello",
   ];
 
   return (
