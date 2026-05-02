@@ -31,7 +31,7 @@ export default function Home() {
       desc: "Campus-based matchmaking platform that connects students across majors and organizations based on shared interests.",
       tech: "PHP, MySQL",
       impact: "Achieved 100+ active users and university-level recognition",
-      link: "president-cupid.wuaze.com",
+      link: "https://president-cupid.wuaze.com",
 
     },
     {
