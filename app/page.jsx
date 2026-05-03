@@ -41,7 +41,7 @@ export default function Home() {
     {
       title: "President Cupid’s",
       role: "QA Tester",
-      desc: "Campus matchmaking platform with anonymous messaging and compatibility algorithms. ",
+      desc: "Campus matchmaking platform with anonymous messaging and compatibility algorithms, 100+ active users in first launch.",
       whatIDid: "Developed secure features: anonymous messaging, blind chat, and matchmaking logic.",
       tech: "PHP, MySQL, CSS, JavaScript, HTML",
       impact: "Reached 15,000+ views and 45,000%+ growth within 30 days, with 83% new users from non-followers.",
@@ -235,13 +235,13 @@ export default function Home() {
               className="mt-6"
             >
               <motion.a
-                href="/docs/Michelle_CV.pdf"
+                href="/docs/CV Michelle.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ 
+                whileHover={{
                   y: -5,
-                  boxShadow: isHackerMode 
-                    ? "0 0 20px rgba(50, 205, 50, 0.4)" 
+                  boxShadow: isHackerMode
+                    ? "0 0 20px rgba(50, 205, 50, 0.4)"
                     : "0 10px 25px rgba(0, 0, 0, 0.1)"
                 }}
                 whileTap={{ scale: 0.95 }}
