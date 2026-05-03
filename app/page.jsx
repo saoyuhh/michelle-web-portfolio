@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Section } from "@/components/Section";
-import { Github, Linkedin, Mail, ExternalLink, Terminal, Lock, Unlock, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Terminal, Lock, Unlock, ArrowUpRight, FileText, ChevronDown, ChevronUp } from "lucide-react";
 
 import Lanyard from "@/components/Lanyard";
 
@@ -28,34 +28,43 @@ export default function Home() {
   const projects = [
     {
       title: "President Cupid’s",
-      desc: "Campus-based matchmaking platform that connects students across majors and organizations based on shared interests.",
-      tech: "PHP, MySQL",
-      impact: "Achieved 100+ active users and university-level recognition",
+      role: "QA Tester",
+      desc: "Campus matchmaking platform with anonymous messaging and compatibility algorithms. ",
+      whatIDid: "Developed secure features: anonymous messaging, blind chat, and matchmaking logic.",
+      tech: "PHP, MySQL, CSS, JavaScript, HTML",
+      impact: "Reached 15,000+ views and 45,000%+ growth within 30 days, with 83% new users from non-followers.",
       link: "https://president-cupid.wuaze.com",
-
+      doc: "/docs/President’s Cupid Report.pdf",
     },
     {
-      title: "Kost Management System",
-      desc: "Web-based system for managing boarding houses, tenants, rooms, and payment records in an organized structure.",
+      title: "Kost Management",
+      role: "Database Designer",
+      desc: "Web-based system for managing boarding houses, tenants, and automated payment tracking.",
+      whatIDid: "Designed relational schemas and CRUD logic, including automated payment tracking.",
       tech: "PHP, MySQL",
-      impact: "Improved operational efficiency for 100+ tenants through structured data management",
+      impact: "Modernized manual management processes, improving efficiency for over 100 tenants.",
       link: "https://github.com/saoyuhh/Kost-Management-System",
+      doc: "/docs/Group 10_Database Project Report.pdf",
     },
     {
       title: "ArenaGo",
+      role: "Mobile Developer",
       desc: "Mobile application for real-time badminton court booking and scheduling system.",
-      tech: "Kotlin, Firebase",
-      impact: "Reduced double-booking issues and improved reservation efficiency",
+      whatIDid: "Built a real-time booking mobile app using Kotlin and Firebase, implementing automated scheduling to prevent overlaps.",
+      tech: "Kotlin, Firebase, Java",
+      impact: "Optimized court utilization and achieved zero-error manual booking processes.",
       link: "https://github.com/saoyuhh/Arena-Go",
-
+      doc: "/docs/PROJECT WMP ArenaGo .pdf",
     },
     {
       title: "Emergency Hospital Simulator (Roblox)",
+      role: "Game Designer",
       desc: "Multiplayer simulation game with interactive hospital roleplay and custom gameplay mechanics.",
+      whatIDid: "Created immersive hospital layouts and built the interactive logic for a better roleplay experience.",
       tech: "Lua, Roblox Studio",
-      impact: "Enhanced multiplayer experience through optimized server-side logic",
+      impact: "Developed a smooth and stable simulation environment that players actually enjoy.",
       link: "#",
-
+      doc: "/docs/REPORT FINAL PROJECT 3D ROBLOX_ANDRI_MICHELLE_ILHAM_NAILA.pdf",
     },
   ];
 
@@ -68,6 +77,51 @@ export default function Home() {
     "Linux",
     "Network Security",
     "Digital Forensics",
+  ];
+
+  const certificates = [
+    { 
+      title: "AWS Security Fundamentals", 
+      issuer: "Amazon Web Services", 
+      path: "/certs/AWS Security Fundamentals Second Edition.pdf",
+      image: "/certs/AWS Security Fundamentals Second Edition.jpg"
+    },
+    { 
+      title: "AWS Core Security Concepts", 
+      issuer: "Amazon Web Services", 
+      path: "/certs/AWS core security concept.pdf",
+      image: "/certs/AWS core security concept.jpg"
+    },
+    { 
+      title: "AWS Shared Responsibility Model", 
+      issuer: "Amazon Web Services", 
+      path: "/certs/AWS Shared Responsibility.pdf",
+      image: "/certs/AWS Shared Responsibility.jpg"
+    },
+    { 
+      title: "AWS Identity and Access Management (IAM)", 
+      issuer: "Amazon Web Services", 
+      path: "/certs/Introduction to AWS Identity and Access Management (IAM).pdf",
+      image: "/certs/Introduction to AWS Identity and Access Management (IAM).jpg"
+    },
+    { 
+      title: "AWS Authentication and Authorization", 
+      issuer: "Amazon Web Services", 
+      path: "/certs/aws Authentication and Authorization with AWS Identity and Access Management.pdf",
+      image: "/certs/aws Authentication and Authorization with AWS Identity and Access Management.jpg"
+    },
+    { 
+      title: "AWS Billing and Cost Management", 
+      issuer: "Amazon Web Services", 
+      path: "/certs/AWS Billing and Cost.pdf",
+      image: "/certs/AWS Billing and Cost.jpg"
+    },
+    { 
+      title: "Dicoding / IDCamp Certification", 
+      issuer: "Dicoding Indonesia", 
+      path: "/certs/dicoding sertifikat_course_905_4282503_230326164643.pdf",
+      image: "/certs/054d98f0-c04b-43c3-87de-3744a24bfc64-0.jpg"
+    },
   ];
 
   return (
@@ -84,15 +138,15 @@ export default function Home() {
           <div className="font-black text-xl tracking-tighter" style={{ color: isHackerMode ? '#32CD32' : '#000000' }}>M.</div>
           <div className="flex gap-6 items-center text-sm font-black" style={{ color: isHackerMode ? '#32CD32' : '#000000' }}>
             <button
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="hover:opacity-60 transition-opacity"
-              style={{ color: isHackerMode ? '#32CD32' : '#000000' }}
-            >About</button>
-            <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               className="hover:opacity-60 transition-opacity"
               style={{ color: isHackerMode ? '#32CD32' : '#000000' }}
             >Projects</button>
+            <button
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="hover:opacity-60 transition-opacity"
+              style={{ color: isHackerMode ? '#32CD32' : '#000000' }}
+            >About</button>
             <button
               onClick={() => setIsHackerMode(!isHackerMode)}
               className="ml-2 p-2 rounded-full transition-colors"
@@ -150,82 +204,61 @@ export default function Home() {
       </section>
 
 
-      {/* About Section */}
-      <Section id="about">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-6 flex items-center gap-3">
-            <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
-            About Me
-          </h2>
-          <p className="text-lg leading-relaxed opacity-80 font-medium">
-            Undergraduate Informatics student interested in web development and cybersecurity.
-          </p>
-          <p className="text-lg leading-relaxed opacity-80 font-medium">
-            I enjoy building simple, functional web applications and exploring how systems work behind the scenes.
-            I focus on strengthening my fundamentals in development, clean code, and basic security practices.
-            Currently, I’m continuing to build my foundation in web development, security, and software testing.
-          </p>
-
-        </div>
-      </Section>
-
       {/* Projects Section */}
       <Section id="projects">
-        <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-          <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
-          Cyber Lab (Projects)
-        </h2>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+            <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
+            Featured Projects
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-2xl p-6 hover:shadow-xl hover:border-foreground/50 dark:hover:border-matrix/80 transition-all duration-300 flex flex-col h-full"
-            >
-
-
-              <h3 className="text-xl font-bold mb-2 text-foreground transition-colors">{project.title}</h3>
-              <p className="opacity-70 mb-6 flex-grow font-medium">{project.desc}</p>
-
-              <div className="mt-auto space-y-4">
-                <div className="flex items-center gap-2 text-sm opacity-60">
-                  <Terminal size={14} />
-                  <span className="font-mono text-xs bg-foreground/5 dark:bg-matrix/10 px-2 py-1 rounded font-bold">{project.tech}</span>
-                </div>
-                <div className="text-sm font-bold opacity-90 flex justify-between items-center">
-                  <span>Impact: <span className="font-medium opacity-70">{project.impact}</span></span>
-                  {project.link && project.link !== "#" && (
-                    <a
-                      href={project.link}
-                      className="flex items-center gap-1 text-xs uppercase tracking-wider hover:underline"
-                    >
-                      View <ArrowUpRight size={12} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
         </div>
       </Section>
 
-      {/* Skills Section */}
-      <Section id="skills">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-            <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
-            Core Skills
-          </h2>
-
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill, i) => (
-              <div
-                key={i}
-                className="px-5 py-2.5 bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-full font-bold hover:border-foreground dark:hover:border-matrix transition-all duration-300 hover:-translate-y-1"
-              >
-                {skill}
+      {/* About & Skills Section */}
+      <Section id="about">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
+                About Me
+              </h2>
+              <div className="space-y-4 text-lg leading-relaxed opacity-80 font-medium">
+                <p>
+                  Undergraduate Informatics student interested in web development and cybersecurity.
+                </p>
+                <p>
+                  I enjoy building simple, functional web applications and exploring how systems work behind the scenes.
+                  I focus on strengthening my fundamentals in development, clean code, and basic security practices.
+                </p>
+                <p>
+                  Currently, I’m continuing to build my foundation in web development, security, and software testing.
+                </p>
               </div>
-            ))}
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
+                Core Skills
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {skills.map((skill, i) => (
+                  <div
+                    key={i}
+                    className="px-5 py-2.5 bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-full font-bold hover:border-foreground dark:hover:border-matrix transition-all duration-300 hover:-translate-y-1"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </Section>
@@ -237,24 +270,44 @@ export default function Home() {
           Professional Credentials
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Certificate 1 */}
-          <div className="group relative bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-3xl p-6 hover:shadow-xl hover:border-foreground/50 dark:hover:border-matrix/80 transition-all duration-300">
-            <div className="w-full h-40 bg-foreground/5 dark:bg-matrix/5 rounded-2xl mb-5 flex items-center justify-center overflow-hidden border border-foreground/10 dark:border-matrix/20">
-              <span className="opacity-80 font-bold text-xl tracking-wider">IDCamp</span>
+        <div className="flex overflow-x-auto scrollbar-hide gap-6 pb-8 snap-x snap-mandatory px-2">
+          {certificates.map((cert, index) => (
+            <div
+              key={index}
+              className="min-w-[300px] md:min-w-[400px] snap-center group relative bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-3xl p-6 hover:shadow-xl hover:border-foreground/50 dark:hover:border-matrix/80 transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="w-full h-48 bg-foreground/5 dark:bg-matrix/5 rounded-2xl mb-5 flex items-center justify-center overflow-hidden border border-foreground/10 dark:border-matrix/20 relative">
+                {cert.image ? (
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="text-center p-4">
+                    <FileText className="w-12 h-12 mx-auto mb-2 opacity-20" />
+                    <span className="opacity-40 font-bold tracking-tight text-xs block leading-tight">{cert.title}</span>
+                  </div>
+                )}
+                {/* Overlay for better readability on hover if needed */}
+                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
+              </div>
+              <div className="flex-grow mb-4">
+                <h3 className="text-xl font-bold mb-1 text-foreground transition-colors leading-tight">{cert.title}</h3>
+                <p className="opacity-70 font-medium text-sm">Issued by {cert.issuer}</p>
+              </div>
+              <div className="mt-auto">
+                <a
+                  href={cert.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-foreground opacity-60 hover:opacity-100 transition-all"
+                >
+                  View Full PDF <ExternalLink size={12} />
+                </a>
+              </div>
             </div>
-            <h3 className="text-xl font-bold mb-1 text-foreground transition-colors">IDCamp Data Scientist</h3>
-            <p className="opacity-70 font-medium">Issued by IDCamp</p>
-          </div>
-
-          {/* Certificate 2 (Placeholder) */}
-          <div className="group relative bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-3xl p-6 hover:shadow-xl hover:border-foreground/50 dark:hover:border-matrix/80 transition-all duration-300">
-            <div className="w-full h-40 bg-foreground/5 dark:bg-matrix/5 rounded-2xl mb-5 flex items-center justify-center overflow-hidden border-2 border-foreground/10 border-dashed dark:border-matrix/30">
-              <span className="opacity-40 font-bold">CEH / CompTIA Image</span>
-            </div>
-            <h3 className="text-xl font-bold mb-1 text-foreground transition-colors">CEH / CompTIA</h3>
-            <p className="opacity-70 font-medium">Pending Certification</p>
-          </div>
+          ))}
         </div>
       </Section>
 
@@ -299,5 +352,88 @@ export default function Home() {
         </div>
       </footer>
     </main>
+  );
+}
+
+function ProjectCard({ project }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="group relative bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-2xl p-6 hover:shadow-xl hover:border-foreground/50 dark:hover:border-matrix/80 transition-all duration-300 flex flex-col h-full">
+      <div className="flex justify-between items-start mb-2">
+        <h3 className="text-xl font-bold text-foreground transition-colors">{project.title}</h3>
+        {project.role && (
+          <span className="text-[10px] uppercase tracking-wider font-black px-2 py-0.5 rounded-full border border-foreground/20 opacity-60">
+            {project.role}
+          </span>
+        )}
+      </div>
+
+      <p className="opacity-60 text-sm mb-4 font-medium italic leading-snug">{project.desc}</p>
+
+      <div className="mb-4">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity"
+        >
+          {isOpen ? "Hide Details" : "View Details"}
+          {isOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+        </button>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="space-y-4 pt-4">
+                <div>
+                  <h4 className="text-[10px] uppercase tracking-[0.2em] font-black opacity-40 mb-1">What I Did</h4>
+                  <p className="text-sm font-bold opacity-80 leading-relaxed">{project.whatIDid}</p>
+                </div>
+                <div>
+                  <h4 className="text-[10px] uppercase tracking-[0.2em] font-black opacity-40 mb-1">Result</h4>
+                  <p className="text-sm font-bold text-foreground/90 leading-relaxed">{project.impact}</p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="mt-auto space-y-4 pt-4 border-t border-foreground/5">
+        <div className="flex items-center gap-2 text-sm opacity-60">
+          <Terminal size={14} />
+          <span className="font-mono text-[10px] bg-foreground/5 dark:bg-matrix/10 px-2 py-1 rounded font-black">{project.tech}</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex gap-4">
+            {project.doc && project.doc !== "#" && (
+              <a
+                href={project.doc}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest hover:text-foreground opacity-60 hover:opacity-100 transition-all group/link"
+              >
+                Documentation <FileText size={12} className="group-hover/link:scale-110 transition-transform" />
+              </a>
+            )}
+          </div>
+          {project.link && project.link !== "#" && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest hover:text-foreground group/view"
+            >
+              Live View <ArrowUpRight size={12} className="group-hover/view:translate-x-0.5 group-hover/view:-translate-y-0.5 transition-transform" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
