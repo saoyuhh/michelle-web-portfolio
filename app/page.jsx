@@ -68,57 +68,52 @@ export default function Home() {
     },
   ];
 
-  const skills = [
-    "C++",
-    "Java",
-    "Python",
-    "PHP",
-    "MySQL",
-    "Linux",
-    "Network Security",
-    "Digital Forensics",
+  const skillCategories = [
+    { name: "Backend & Mobile", skills: ["PHP", "MySQL", "Kotlin"] },
+    { name: "Frontend", skills: ["JavaScript", "HTML", "CSS"] },
+    { name: "Security & Systems", skills: ["Linux", "Network Security", "Digital Forensics"] }
   ];
 
   const certificates = [
-    { 
-      title: "AWS Security Fundamentals", 
-      issuer: "Amazon Web Services", 
+    {
+      title: "AWS Security Fundamentals",
+      issuer: "Amazon Web Services",
       path: "/certs/AWS Security Fundamentals Second Edition.pdf",
       image: "/certs/AWS Security Fundamentals Second Edition.jpg"
     },
-    { 
-      title: "AWS Core Security Concepts", 
-      issuer: "Amazon Web Services", 
+    {
+      title: "AWS Core Security Concepts",
+      issuer: "Amazon Web Services",
       path: "/certs/AWS core security concept.pdf",
       image: "/certs/AWS core security concept.jpg"
     },
-    { 
-      title: "AWS Shared Responsibility Model", 
-      issuer: "Amazon Web Services", 
+    {
+      title: "AWS Shared Responsibility Model",
+      issuer: "Amazon Web Services",
       path: "/certs/AWS Shared Responsibility.pdf",
       image: "/certs/AWS Shared Responsibility.jpg"
     },
-    { 
-      title: "AWS Identity and Access Management (IAM)", 
-      issuer: "Amazon Web Services", 
+    {
+      title: "AWS Identity and Access Management (IAM)",
+      issuer: "Amazon Web Services",
       path: "/certs/Introduction to AWS Identity and Access Management (IAM).pdf",
       image: "/certs/Introduction to AWS Identity and Access Management (IAM).jpg"
     },
-    { 
-      title: "AWS Authentication and Authorization", 
-      issuer: "Amazon Web Services", 
+    {
+      title: "AWS Authentication and Authorization",
+      issuer: "Amazon Web Services",
       path: "/certs/aws Authentication and Authorization with AWS Identity and Access Management.pdf",
       image: "/certs/aws Authentication and Authorization with AWS Identity and Access Management.jpg"
     },
-    { 
-      title: "AWS Billing and Cost Management", 
-      issuer: "Amazon Web Services", 
+    {
+      title: "AWS Billing and Cost Management",
+      issuer: "Amazon Web Services",
       path: "/certs/AWS Billing and Cost.pdf",
       image: "/certs/AWS Billing and Cost.jpg"
     },
-    { 
-      title: "Dicoding / IDCamp Certification", 
-      issuer: "Dicoding Indonesia", 
+    {
+      title: "Dicoding / IDCamp Certification",
+      issuer: "Dicoding Indonesia",
       path: "/certs/dicoding sertifikat_course_905_4282503_230326164643.pdf",
       image: "/certs/054d98f0-c04b-43c3-87de-3744a24bfc64-0.jpg"
     },
@@ -135,7 +130,13 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50">
         <div className="max-w-6xl mx-auto px-6 md:px-12 py-6 flex justify-between items-center">
-          <div className="font-black text-xl tracking-tighter" style={{ color: isHackerMode ? '#32CD32' : '#000000' }}>M.</div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="font-black text-xl tracking-tighter hover:opacity-60 transition-opacity"
+            style={{ color: isHackerMode ? '#32CD32' : '#000000' }}
+          >
+            M.
+          </button>
           <div className="flex gap-6 items-center text-sm font-black" style={{ color: isHackerMode ? '#32CD32' : '#000000' }}>
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -231,14 +232,13 @@ export default function Home() {
               </h2>
               <div className="space-y-4 text-lg leading-relaxed opacity-80 font-medium">
                 <p>
-                  Undergraduate Informatics student interested in web development and cybersecurity.
+                  Hi, I’m Michelle — an Informatics undergraduate focused on web development and cybersecurity.
                 </p>
                 <p>
-                  I enjoy building simple, functional web applications and exploring how systems work behind the scenes.
-                  I focus on strengthening my fundamentals in development, clean code, and basic security practices.
+                  I build things that work and matter. One of my projects, a campus matchmaking platform, grew to 100+ active users and was recognized by the university rector.
                 </p>
                 <p>
-                  Currently, I’m continuing to build my foundation in web development, security, and software testing.
+                  Beyond coding, I take on real responsibilities — managing a 50M+ IDR budget as Senior Treasurer and leading teams. It shapes how I think about building systems that are practical and reliable.
                 </p>
               </div>
             </div>
@@ -248,13 +248,20 @@ export default function Home() {
                 <span className="w-8 h-1 bg-foreground rounded-full transition-colors duration-500"></span>
                 Core Skills
               </h2>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill, i) => (
-                  <div
-                    key={i}
-                    className="px-5 py-2.5 bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-full font-bold hover:border-foreground dark:hover:border-matrix transition-all duration-300 hover:-translate-y-1"
-                  >
-                    {skill}
+              <div className="space-y-6">
+                {skillCategories.map((category, i) => (
+                  <div key={i}>
+                    <h3 className="text-[10px] uppercase tracking-[0.2em] font-black opacity-40 mb-3">{category.name}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill, j) => (
+                        <div
+                          key={j}
+                          className="px-4 py-2 bg-transparent border-2 border-foreground/10 dark:border-matrix/30 rounded-full font-bold hover:border-foreground dark:hover:border-matrix transition-all duration-300 hover:-translate-y-1 text-sm"
+                        >
+                          {skill}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -314,13 +321,13 @@ export default function Home() {
       {/* Call to Action Section */}
       <Section id="connect" className="text-center">
         <div className="max-w-2xl mx-auto space-y-8">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Ready to secure the future?</h2>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Got an idea? Let's go.</h2>
           <p className="text-xl opacity-70 font-medium">
-            Currently looking for new opportunities and collaborations in web development and cyber security.
+            Open to internships and collaborations, don't hesitate to say hi.
           </p>
           <div className="pt-8">
             <a
-              href="mailto:contact@example.com"
+              href="mailto:miiseel122@gmail.com"
               className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background dark:bg-matrix dark:text-black rounded-full font-black text-xl hover:scale-105 transition-transform"
             >
               Get In Touch <ArrowUpRight size={24} />
@@ -335,19 +342,19 @@ export default function Home() {
           <div className="font-black text-2xl tracking-tighter">M.</div>
 
           <div className="flex justify-center gap-5">
-            <a href="#" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
+            <a href="https://github.com/saoyuhh" target="_blank" rel="noopener noreferrer" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
               <Github size={24} />
             </a>
-            <a href="#" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
+            <a href="https://linkedin.com/in/michelle--/" target="_blank" rel="noopener noreferrer" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:contact@example.com" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
+            <a href="mailto:miiseel122@gmail.com" className="p-4 border-2 border-foreground/10 dark:border-matrix/30 rounded-full hover:bg-foreground hover:text-background dark:hover:bg-matrix dark:hover:text-black transition-all">
               <Mail size={24} />
             </a>
           </div>
 
           <p className="opacity-50 text-sm font-bold">
-            © {new Date().getFullYear()} Michelle. System Secured.
+            © {new Date().getFullYear()} Michelle
           </p>
         </div>
       </footer>
