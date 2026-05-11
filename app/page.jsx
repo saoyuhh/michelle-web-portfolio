@@ -75,7 +75,7 @@ export default function Home() {
       whatIDid: "Created immersive hospital layouts and built the interactive logic for a better roleplay experience.",
       tech: "Lua, Roblox Studio",
       impact: "Developed a smooth and stable simulation environment that players actually enjoy.",
-      link: "#",
+      link: "https://www.roblox.com/games/80329704015269/Emergency-Hospital-simulator",
       doc: "/docs/REPORT FINAL PROJECT 3D ROBLOX_ANDRI_MICHELLE_ILHAM_NAILA.pdf",
     },
   ];
