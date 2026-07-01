@@ -39,14 +39,33 @@ export default function Home() {
 
   const projects = [
     {
+      title: "Lost & Found",
+      role: "Quality Assurance (QA)",
+      desc: "A web-based platform for reporting and finding lost items.",
+      whatIDid: "Performed functional testing, documented bugs, and suggested UI/UX improvements.",
+      tech: "PHP, MySQL, CSS, JavaScript, HTML",
+      impact: "Improved the efficiency of managing lost and found reports digitally.",
+      link: "https://campus-connect-web-sigma.vercel.app/",
+      doc: "/docs/President University Lost & Found.pdf",
+    },
+    {
       title: "President Cupid’s",
-      role: "QA Tester",
+      role: "Quality Assurance (QA)",
       desc: "Campus matchmaking platform with anonymous messaging and compatibility algorithms, 100+ active users in first launch.",
       whatIDid: "Developed secure features: anonymous messaging, blind chat, and matchmaking logic.",
       tech: "PHP, MySQL, CSS, JavaScript, HTML",
       impact: "Reached 15,000+ views and 45,000%+ growth within 30 days, with 83% new users from non-followers.",
       link: "https://president-cupid.wuaze.com",
       doc: "/docs/President’s Cupid Report.pdf",
+    },
+    {
+      title: "GRC & Security Audit Platform",
+      role: "Quality Assurance (QA)",
+      desc: "A web-based platform for cybersecurity risk assessment and compliance auditing.",
+      whatIDid: "Prepared project documentation, evaluated system workflows, and recommended feature improvements to enhance usability and compliance processes.",
+      tech: "PHP, MySQL, CSS, JavaScript, HTML",
+      impact: "Streamlined security risk assessment and compliance auditing through a centralized GRC platform.",
+      doc: "/docs/PROJECT GRC.pdf",
     },
     {
       title: "Kost Management",
