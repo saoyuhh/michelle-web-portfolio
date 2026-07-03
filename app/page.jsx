@@ -40,17 +40,17 @@ export default function Home() {
   const projects = [
     {
       title: "Lost & Found",
-      role: "Quality Assurance (QA)",
+      role: "QA Tester",
       desc: "A web-based platform for reporting and finding lost items.",
       whatIDid: "Performed functional testing, documented bugs, and suggested UI/UX improvements.",
-      tech: "PHP, MySQL, CSS, JavaScript, HTML",
+      tech: "TypeScript, JavaScript, HTML, CSS",
       impact: "Improved the efficiency of managing lost and found reports digitally.",
       link: "https://campus-connect-web-sigma.vercel.app/",
       doc: "/docs/President University Lost & Found.pdf",
     },
     {
       title: "President Cupid’s",
-      role: "Quality Assurance (QA)",
+      role: "QA Tester, UI/UX Designer, Digital Content Manager",
       desc: "Campus matchmaking platform with anonymous messaging and compatibility algorithms, 100+ active users in first launch.",
       whatIDid: "Developed secure features: anonymous messaging, blind chat, and matchmaking logic.",
       tech: "PHP, MySQL, CSS, JavaScript, HTML",
@@ -60,10 +60,10 @@ export default function Home() {
     },
     {
       title: "GRC & Security Audit Platform",
-      role: "Quality Assurance (QA)",
+      role: "QA Tester, Technical Documentation, UI/UX Reviewer",
       desc: "A web-based platform for cybersecurity risk assessment and compliance auditing.",
       whatIDid: "Prepared project documentation, evaluated system workflows, and recommended feature improvements to enhance usability and compliance processes.",
-      tech: "PHP, MySQL, CSS, JavaScript, HTML",
+      tech: "FastAPI, HTML, CSS, JavaScript, SQLite, NIST CSF",
       impact: "Streamlined security risk assessment and compliance auditing through a centralized GRC platform.",
       doc: "/docs/PROJECT GRC.pdf",
     },
@@ -79,7 +79,7 @@ export default function Home() {
     },
     {
       title: "ArenaGo",
-      role: "Mobile Developer",
+      role: "Android Developer",
       desc: "Mobile application for real-time badminton court booking and scheduling system.",
       whatIDid: "Built a real-time booking mobile app using Kotlin and Firebase, implementing automated scheduling to prevent overlaps.",
       tech: "Kotlin, Firebase, Java",
